@@ -1,0 +1,11 @@
+DirectoryIndex index.php
+Options -Indexes
+
+RewriteEngine On
+
+# QuickAccess PHP API
+RewriteRule ^api/?$ api.php [QSA,L]
+RewriteRule ^api/(.*)$ api.php?route=$1 [QSA,L]
+
+# Never expose runtime room metadata or uploaded files directly.
+RewriteRule ^(?:uploads|data)(?:/|$) - [F,L]
